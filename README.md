@@ -31,6 +31,6 @@
 
 -ToDo list where you can save your Notes at Cloud in JsonPowerdbb.
 
-![My Next Project](https://github.com/shyamkuntal/Personal-Details/blob/main/savedetails.jpg)
+![My Next Project](https://github.com/shyamkuntal/Personal-Details/blob/main/TodoList.jpg)
 
 
