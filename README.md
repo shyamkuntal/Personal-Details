@@ -25,8 +25,12 @@
 
 ### Screenshots:
 
-![Dashboard](https://github.com/BeAgarwal/JsonPowerDB/blob/master/Assets/Screenshots/Dashboard.PNG)
+![Dashboard](https://github.com/shyamkuntal/Personal-Details/blob/main/savedetails.jpg)
 
-![Index Page](https://github.com/BeAgarwal/JsonPowerDB/blob/master/Assets/Screenshots/Index.PNG)
+### About My Next Project:
 
-![Visualize](https://github.com/BeAgarwal/JsonPowerDB/blob/master/Assets/Screenshots/Server.PNG)
+-ToDo list where you can save your Notes at Cloud in JsonPowerdbb.
+
+![My Next Project](https://github.com/shyamkuntal/Personal-Details/blob/main/savedetails.jpg)
+
+
