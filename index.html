@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://login2explore.com/jpdb/resources/js/0.0.4/jpdb-commons.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Save Your Personal Details</h2>
+        <form id="empForm" method="post">
+            <div class="form-group">
+                <span><label for="persID">Personal ID:</label> <label id="persIDMsg">
+                    </label></span>
+                <input type="number" class="form-control" name="persID" id="persID" placeholder="Enter Personal ID"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="persName">Your Name:</label>
+                <input type="text" class="form-control" id="persName" placeholder="Enter Your Name" name="persName">
+            </div>
+            <div class="form-group">
+                <label for="persMobile">Mobile:</label>
+                <input type="number" class="form-control" id="persMobile" placeholder="Enter Your Mobile"
+                    name="persMobile">
+            </div>
+            <div class="form-group">
+                <label for="persEmail">Email:</label>
+                <input type="email" class="form-control" id="persEmail" placeholder="Enter Your Email"
+                    name="persEmail">
+            </div>
+            <div class="form-group">
+                <label for="persAadhar">Aadhar Number:</label>
+                <input type="number" class="form-control" id="persAadhar" placeholder="Enter Your Aadhar Number"
+                    name="persAadhar">
+            </div>
+            <input type="button" class="btn btn-primary" id="empSave" value="Save" onclick="saveEmployee();">
+        </form>
+    </div>
+
+    <script>
+        function validateAndGetFormData() {
+            var persIDVar = $("#persID").val();
+            if (persIDVar === "") {
+                alert("Personal ID Required Value");
+                $("#persID").focus();
+                return "";
+            }
+            var persNameVar = $("#persName").val();
+            if (persNameVar === "") {
+                alert("Name is Required Value");
+                $("#persName").focus();
+                return "";
+            }
+            var persEmailVar = $("#persEmail").val();
+            if (persEmailVar === "") {
+                alert("Email is Required Value");
+                $("#persEmail").focus();
+                return "";
+            }
+            var persMobileVar = $("#persMobile").val();
+            if (persMobileVar === "") {
+                alert("Mobile is Required Value");
+                $("#persMobile").focus();
+                return "";
+            }
+            var persAadharVar = $("#persAadhar").val();
+            if (persAadharVar === "") {
+                alert("Aadhar Number is Required Value");
+                $("#persAadhar").focus();
+                return "";
+            }
+            var jsonStrObj = {
+                persID: persIDVar,
+                persName: persNameVar,
+                persEmail: persEmailVar,
+                persMobile: persMobileVar,
+                persAadhar: persAadharVar,
+            };
+            return JSON.stringify(jsonStrObj);
+        }
+        // This method is used to create PUT Json request.
+        function resetForm() {
+            $("#persID").val("")
+            $("#persName").val("");
+            $("#persEmail").val("");
+            $("#persMobile").val("");
+            $("#persAadhar").val("");
+            $("#persID").focus();
+        }
+        function saveEmployee() {
+            var jsonStr = validateAndGetFormData();
+            if (jsonStr === "") {
+                return;
+            }
+            var putReqStr = createPUTRequest("90937991|-31949265807666315|90953657",
+                jsonStr, "SAMPLE", "EMP-REL");
+            alert(putReqStr);
+            jQuery.ajaxSetup({ async: false });
+            var resultObj = executeCommandAtGivenBaseUrl(putReqStr,
+                "http://api.login2explore.com:5577", "/api/iml");
+            alert(JSON.stringify(resultObj));
+            jQuery.ajaxSetup({ async: true });
+            resetForm();
+        }
+
+    </script>
